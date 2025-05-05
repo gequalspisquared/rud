@@ -1,5 +1,23 @@
 # RUD
 RUD is a rendering/game engine that utilizes modern graphics APIs (GAPIs) for
 achieving maximum performance and real-time framerates. RUD currently supports
-Vulkan, DX12, and DX11 by leveraging the
+Vulkan, DirectX12, and DirectX11 by leveraging the
 [NVRHI](https://github.com/NVIDIA-RTX/NVRHI) hardware interface by NVidia.
+
+## Dependencies
+- [assimp](https://github.com/assimp/assimp):
+For importing a wide variety of 3D model formats
+- [DirectXShaderCompiler](https://github.com/microsoft/DirectXShaderCompiler):
+For compiling HLSL shader code into SPIR-V for Vulkan and DXIL for DirectX12
+- [GLFW](https://github.com/glfw/glfw):
+For windowing and input handling
+- [glm](git@github.com:g-truc/glm.git):
+For 3D math
+- [imgui](git@github.com:ocornut/imgui.git):
+For an easy to use and extensible GUI system
+- [NVRHI](https://github.com/NVIDIA-RTX/NVRHI):
+An easy to use GAPI abstraction for Vulkan, DirectX12, and DirectX11
+- [spdlog](https://github.com/gabime/spdlog):
+A fast and highly configurable logging library
+- [stb](https://github.com/nothings/stb)
+Provides a plethora of useful utilities, primarily used for loading textures
