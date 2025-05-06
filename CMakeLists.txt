@@ -17,6 +17,10 @@ else()
     set(BUILD_SHARED_LIBS OFF)
 endif()
 
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Release)
+endif()
+
 # Include guards
 if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
     message(
@@ -37,13 +41,11 @@ file(GLOB_RECURSE headers CONFIGURE_DEPENDS
 )
 file(GLOB_RECURSE sources CONFIGURE_DEPENDS
      "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
+     "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/_impl.cpp"
 )
 
 # Create library
-add_library(
-    ${PROJECT_NAME} ${headers} ${sources}
-                    "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/_impl.cpp"
-)
+add_library(${PROJECT_NAME} ${headers} ${sources})
 set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 20)
 
 if(RUD_BUILD_SHARED)
@@ -57,8 +59,7 @@ target_compile_options(
     ${PROJECT_NAME} PUBLIC "$<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/permissive->"
 )
 
-# Link dependencies
-target_link_libraries(${PROJECT_NAME} PRIVATE assimp)
+# Link dependencies target_link_libraries(${PROJECT_NAME} PRIVATE assimp)
 
 target_include_directories(
     ${PROJECT_NAME}
