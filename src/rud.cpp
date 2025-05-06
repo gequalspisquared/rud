@@ -1,4 +1,4 @@
-#include "../include/rud/rud.h"
+#include "rud/rud.h"
 
 void printRud() {
     std::cout << "Hello from Rud!\n";

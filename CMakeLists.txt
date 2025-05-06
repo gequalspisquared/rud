@@ -63,13 +63,8 @@ target_compile_options(
 
 target_include_directories(
     ${PROJECT_NAME}
-    PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/rud>
+    PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
            $<INSTALL_INTERFACE:include/rud> # <prefix>/include/rud
-)
-target_include_directories(
-    ${PROJECT_NAME}
-    PRIVATE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/platform>
-            $<INSTALL_INTERFACE:include/platform> # <prefix>/include/platform
 )
 
 # Build examples
