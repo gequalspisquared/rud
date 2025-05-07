@@ -59,7 +59,14 @@ target_compile_options(
     ${PROJECT_NAME} PUBLIC "$<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/permissive->"
 )
 
-# Link dependencies target_link_libraries(${PROJECT_NAME} PRIVATE assimp)
+# Link dependencies
+
+# Note that nvrhi_vk/_dx12/_dx11 must come before the main nvrhi for static
+# libraries
+target_link_libraries(${PROJECT_NAME} PRIVATE nvrhi_vk)
+target_link_libraries(
+    ${PROJECT_NAME} PRIVATE assimp glfw glm::glm nvrhi spdlog::spdlog
+)
 
 target_include_directories(
     ${PROJECT_NAME}
