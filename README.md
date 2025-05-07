@@ -16,9 +16,9 @@ For importing a wide variety of 3D model formats
 For compiling HLSL shader code into SPIR-V for Vulkan and DXIL for DirectX12
 - [GLFW](https://github.com/glfw/glfw):
 For windowing and input handling
-- [glm](git@github.com:g-truc/glm.git):
+- [glm](https://github.com/g-truc/glm):
 For 3D math
-- [imgui](git@github.com:ocornut/imgui.git):
+- [imgui](https://github.com/ocornut/imgui):
 For an easy to use and extensible GUI system
 - [NVRHI](https://github.com/NVIDIA-RTX/NVRHI):
 An easy to use GAPI abstraction for Vulkan, DirectX12, and DirectX11

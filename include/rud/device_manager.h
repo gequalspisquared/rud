@@ -53,6 +53,7 @@ public:
     static DeviceManager *create(nvrhi::GraphicsAPI api);
 
 private:
+    static DeviceManager *createVk();
 };
 
 } //namespace rud
