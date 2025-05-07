@@ -10,6 +10,8 @@ project(
 # Options
 option(RUD_BUILD_SHARED "Build RUD as a shared library (.dll/.so)" OFF)
 option(RUD_BUILD_EXAMPLES "Build the examples that come with RUD" ON)
+option(RUD_WITH_DX12 "Build RUD with the DirectX12 backend" OFF)
+option(RUD_WITH_VK "Build RUD with the Vulkan backend" ON)
 
 if(RUD_BUILD_SHARED)
     set(BUILD_SHARED_LIBS ON)
@@ -63,7 +65,13 @@ target_compile_options(
 
 # Note that nvrhi_vk/_dx12/_dx11 must come before the main nvrhi for static
 # libraries
-target_link_libraries(${PROJECT_NAME} PRIVATE nvrhi_vk)
+if(NOT RUD_BUILD_SHARED AND RUD_WITH_VK)
+    target_link_libraries(${PROJECT_NAME} PRIVATE nvrhi_vk)
+endif()
+if(NOT RUD_BUILD_SHARED AND RUD_WITH_DX12)
+    target_link_libraries(${PROJECT_NAME} PRIVATE nvrhi_dx12)
+endif()
+
 target_link_libraries(
     ${PROJECT_NAME} PRIVATE assimp glfw glm::glm nvrhi spdlog::spdlog
 )
@@ -72,6 +80,14 @@ target_include_directories(
     ${PROJECT_NAME}
     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
            $<INSTALL_INTERFACE:include/rud> # <prefix>/include/rud
+)
+
+# Compile definitions
+target_compile_definitions(
+    ${PROJECT_NAME} PUBLIC RUD_WITH_VK=$<BOOL:${RUD_WITH_VK}>
+)
+target_compile_definitions(
+    ${PROJECT_NAME} PUBLIC RUD_WITH_DX12=$<BOOL:${RUD_WITH_DX12}>
 )
 
 # Build examples
