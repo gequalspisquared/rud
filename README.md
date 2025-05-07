@@ -4,6 +4,11 @@ achieving maximum performance and real-time framerates. RUD currently supports
 Vulkan, DirectX12, and DirectX11 by leveraging the
 [NVRHI](https://github.com/NVIDIA-RTX/NVRHI) hardware interface by NVidia.
 
+## Requirements
+There are a few things necessary to get RUD to properly build:
+- CMake >=3.14
+- A C++ compiler (clang was used during development, but any should work)
+
 ## Dependencies
 - [assimp](https://github.com/assimp/assimp):
 For importing a wide variety of 3D model formats

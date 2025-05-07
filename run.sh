@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-cmake . -B build -DCMAKE_BUILD_TYPE=Debug
+cmake . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 if [ $? -eq 0 ]; then
     echo "CMake Successful"
     echo
@@ -20,4 +20,7 @@ else
     exit "$?"
 fi
 
-./build/diligent_triangle
+test_file="/build/examples/testing/testing"
+echo "Running test file located in $test_file"
+echo
+"./$test_file"
